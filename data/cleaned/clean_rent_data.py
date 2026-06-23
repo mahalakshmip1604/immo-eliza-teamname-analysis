@@ -1,7 +1,24 @@
 import pandas as pd
 import numpy as np 
 
-df = pd.read_csv("data/raw/forsale.csv")
+df = pd.read_csv("data/raw/torent.csv")
+
+df["certain_parking_space"] = (
+    (df["indoor_parking"] > 0) | (df["outdoor_parking"] > 0)
+).astype("boolean")
+
+# Keep NaN if both unknown
+df.loc[
+    df["indoor_parking"].isna() & df["outdoor_parking"].isna(),
+    "certain_parking_space"
+] = pd.NA
+
+
+df["has_parking"] = (
+    df["indoor_parking"].fillna(0) + df["outdoor_parking"].fillna(0)
+) > 0
+
+
 
 def remove_duplicates(df):
     return df.drop_duplicates()
@@ -30,6 +47,10 @@ def fix_wrong_values(df):
     df.replace(["None", "N/A", "NA", "?", "null"], np.nan, inplace = True)
     return df
 
+columns_to_drop =["url","source", "scrape_date", "html_path", "vat", "house_number", "bedroom_surfaces", "living_room_surface", "kitchen_surface", "showers",
+                  "currently_leased","heat_pump","demarcated_flooding_area", "ground_depth", "terrain_width", "co_ownership_charges"
+                  ]
+
 
 
 df = remove_duplicates(df)
@@ -38,12 +59,16 @@ df = empty_to_nan(df)
 df = fix_wrong_values(df)
 df = remove_custom_duplicates(df)
 
-
-print("Shape after cleaning:", df.shape)
-print("\nMissing values:\n", df.isna().sum().head())
+df_new = df.drop(columns= columns_to_drop, errors = "ignore")
 
 
-df.to_csv("cleaned_sale_properties.csv", index=False)
+
+
+print("Shape after cleaning:", df_new.shape)
+print("\nMissing values:\n", df_new.isna().sum().head())
+
+
+df_new.to_csv("data/cleaned/cleaned_rent_properties.csv", index = False)
 
 print(" Cleaned dataset saved!")
 
@@ -53,4 +78,3 @@ print(" Cleaned dataset saved!")
     #subset=["latitude", "longitude", "price", "livable_surface"])
 
 #print(duplicates.sum())
-
