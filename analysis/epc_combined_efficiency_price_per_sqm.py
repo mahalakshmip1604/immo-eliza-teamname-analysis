@@ -242,7 +242,7 @@ ax2.legend(
 plt.tight_layout(rect=[0, 0, 1, 0.94])
 
 # ==========================================================
-# 10. Save Figure
+#  Save Figure
 # ==========================================================
 image_dir = os.path.join(
     base_dir,
@@ -266,7 +266,4 @@ fig.savefig(
 
 print(f"\nChart saved successfully:\n{output_file}")
 
-# ==========================================================
-# 11. Display Figure
-# ==========================================================
-plt.show()
+
