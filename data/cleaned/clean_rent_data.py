@@ -19,7 +19,6 @@ df["has_parking"] = (
 ) > 0
 
 
-
 def remove_duplicates(df):
     return df.drop_duplicates()
 
@@ -72,9 +71,3 @@ df_new.to_csv("data/cleaned/cleaned_rent_properties.csv", index = False)
 
 print(" Cleaned dataset saved!")
 
-
-
-#duplicates = df.duplicated(
-    #subset=["latitude", "longitude", "price", "livable_surface"])
-
-#print(duplicates.sum())
