@@ -37,6 +37,7 @@ if __name__ == "__main__":
     analysis_scripts = [
         script_dir / "analysis" / "epc_combined_efficiency_price_per_sqm.py",
         script_dir / "analysis" / "epc_individual_efficiency_price_per_sqm.py",
+        script_dir / "analysis" / "alex_analysis.py",
     ]
     
     print("\n" + "="*60)
