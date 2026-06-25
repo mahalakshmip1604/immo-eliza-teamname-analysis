@@ -74,8 +74,8 @@ agg_df = (
     .reset_index()
 )
 
-print("\nAggregated Data:")
-print(agg_df)
+#print("\nAggregated Data:")
+#print(agg_df)
 
 # ==========================================================
 # 5. Create Figure
@@ -123,7 +123,7 @@ for bar in bars:
             ha="center",
             va="bottom",
             fontsize=10,
-            fontweight="semibold",
+            fontweight="bold",
             color="#7F8C8D",         # Clean light gray tint
         )
 

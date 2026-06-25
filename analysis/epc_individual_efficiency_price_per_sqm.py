@@ -56,8 +56,8 @@ agg_df = (
     .reset_index()
 )
 
-print("\nAggregated Data:")
-print(agg_df)
+#print("\nAggregated Data:")
+#print(agg_df)
 
 # ==========================================================
 # 4. Create Figure
@@ -112,7 +112,7 @@ for bar in bars:
             ha="center",
             va="bottom",
             fontsize=10,
-            fontweight="semibold",
+            fontweight="bold",
             color="#7F8C8D",
         )
 
@@ -237,4 +237,4 @@ output_file = os.path.join(image_dir, "epc_individual_efficiency_price_per_sqm.p
 fig.savefig(output_file, dpi=300, bbox_inches="tight", facecolor="white")
 
 print(f"\nChart saved successfully:\n{output_file}")
-plt.show()
+
