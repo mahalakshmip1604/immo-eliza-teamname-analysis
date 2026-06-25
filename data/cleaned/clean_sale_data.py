@@ -62,8 +62,6 @@ df = remove_custom_duplicates(df)
 df_new = df.drop(columns= columns_to_drop, errors = "ignore")
 
 
-
-
 print("Shape after cleaning:", df_new.shape)
 print("\nMissing values:\n", df_new.isna().sum().head())
 
@@ -72,10 +70,4 @@ df_new.to_csv("data/cleaned/cleaned_sale_properties.csv", index = False)
 
 print(" Cleaned dataset saved!")
 
-
-
-#duplicates = df.duplicated(
-    #subset=["latitude", "longitude", "price", "livable_surface"])
-
-#print(duplicates.sum())
 
